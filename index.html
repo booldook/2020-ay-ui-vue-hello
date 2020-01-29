@@ -10,11 +10,6 @@
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/index.css">
-	<script src="./js/jquery-3.4.1.min.js"></script>
-	<script src="./js/popper.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/imagesloaded.pkgd.min.js"></script>
-	<script src="./js/wow.min.js"></script>
 </head>
 <body>
 	<div id="app">
@@ -25,11 +20,18 @@
 					<small>Page형식으로 배우기</small>
 				</h1>
 			</div>
-			<form class="sch-form">
-				<input v-model="str" type="text" class="form-control">
-				<i id="btReset" class="fa fa-times-circle"></i>
+			<form class="sch-form" v-on:submit.prevent="onSubmit">
+				<input v-model="str" name="str" type="text" class="form-control" placeholder="검색어를 입력하세요.">
+				<i v-show="str.length" v-on:click="onReset" id="btReset" class="fa fa-times-circle"></i>
 			</form>
 			<div class="p-3 border border-primary my-3">{{str}}</div>
+			<div v-show="prd.length" class="prd-wrap">
+				<div class="prd" v-for="item in prd">
+					<img v-bind:src="item.src" alt="상품" class="img">
+					<h3>{{item.title}}</h3>
+					<h4>{{item.price}}</h4>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script src="./js/vue.js"></script>
