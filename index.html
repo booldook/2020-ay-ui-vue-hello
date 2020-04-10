@@ -25,12 +25,15 @@
 				<i v-show="str.length" v-on:click="onReset" id="btReset" class="fa fa-times-circle"></i>
 			</form>
 			<div class="p-3 border border-primary my-3">{{str}}</div>
-			<div v-show="prd.length" class="prd-wrap">
-				<div class="prd" v-for="item in prd">
-					<img v-bind:src="item.src" alt="상품" class="img">
-					<h3>{{item.title}}</h3>
-					<h4>{{item.price}}</h4>
+			<div v-if="prd.length" class="prd-wrap">
+				<div class="prd" v-for="v in prd">
+					<img v-bind:src="v.src" alt="상품" class="img">
+					<h3>{{v.title}}</h3>
+					<h4>{{v.price}}</h4>
 				</div>
+			</div>
+			<div v-else class="p-3">
+				검색어가 없습니다.
 			</div>
 		</div>
 	</div>
